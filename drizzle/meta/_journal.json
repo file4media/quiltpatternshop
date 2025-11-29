@@ -1,5 +1,20 @@
 {
   "version": "7",
   "dialect": "mysql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1764455281947,
+      "tag": "0000_fixed_the_santerians",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1764455365783,
+      "tag": "0001_fixed_warlock",
+      "breakpoints": true
+    }
+  ]
 }

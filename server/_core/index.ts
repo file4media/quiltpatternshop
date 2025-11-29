@@ -30,9 +30,20 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  
+  // Stripe webhook must be registered BEFORE express.json() for signature verification
+  const { handleStripeWebhook } = await import("../webhooks");
+  app.post("/api/stripe/webhook", express.raw({ type: "application/json" }), handleStripeWebhook);
+  
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  
+  // File upload endpoint
+  const multer = (await import("multer")).default;
+  const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
+  const { handleFileUpload } = await import("../upload");
+  app.post("/api/upload", upload.single("file"), handleFileUpload);
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API
