@@ -50,24 +50,43 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        <section className="relative h-[500px] md:h-[600px] overflow-hidden">
+        <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-[#f8f5f0] to-white">
           <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/hero-geometric.jpg)' }}
-          >
-            <div className="absolute inset-0 bg-black/40"></div>
-          </div>
-          <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Quilting Made Easy
-            </h2>
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl">
-              Discover beautiful patterns for quilters who love timeless designs
-            </p>
-            <div className="flex gap-4">
-              <Button asChild size="lg" className="bg-[#c4d600] text-black hover:bg-[#b0c200] font-semibold text-lg px-8">
-                <Link href="/patterns">SHOP NOW</Link>
-              </Button>
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: 'url(/hero-soft.jpg)' }}
+          ></div>
+          <div className="relative container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+                Quilting Made Easy
+              </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+                Discover beautiful patterns for quilters who love timeless designs
+              </p>
+            </div>
+            
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid md:grid-cols-2 gap-0">
+                <div className="aspect-square md:aspect-auto overflow-hidden">
+                  <img 
+                    src="/quilter-featured.jpg" 
+                    alt="Quilter at work"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="bg-gradient-to-br from-[#8b7355] to-[#6d5d4b] p-8 md:p-12 flex flex-col justify-center text-white">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                    New Patterns
+                    <span className="block text-[#f4e4c1] mt-2">Just Added</span>
+                  </h3>
+                  <p className="text-lg mb-6 text-white/90">
+                    Explore our curated collection of classic and modern quilt patterns. Instant PDF download with every purchase.
+                  </p>
+                  <Button asChild size="lg" className="bg-white text-foreground hover:bg-gray-100 font-semibold w-fit">
+                    <Link href="/patterns">SEE ALL PATTERNS</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -75,23 +94,23 @@ export default function Home() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-[#c4d600] to-[#a8b800] p-8 rounded-lg text-center">
+              <div className="bg-gradient-to-br from-[#e8dcc8] to-[#d4c4b0] p-8 rounded-lg text-center border border-[#c4b5a0]">
                 <div className="text-5xl mb-4">✨</div>
-                <h3 className="text-2xl font-bold mb-3">Curated Collection</h3>
-                <p className="text-lg">Hand-picked patterns for every skill level</p>
+                <h3 className="text-2xl font-bold mb-3 text-[#5d4e3a]">Curated Collection</h3>
+                <p className="text-lg text-[#6d5d4b]">Hand-picked patterns for every skill level</p>
               </div>
-              <div className="bg-gradient-to-br from-[#ff6b9d] to-[#e85a8a] p-8 rounded-lg text-center text-white">
+              <div className="bg-gradient-to-br from-[#d4b5a8] to-[#c4a595] p-8 rounded-lg text-center border border-[#b49585]">
                 <div className="text-5xl mb-4">📥</div>
-                <h3 className="text-2xl font-bold mb-3">Instant Download</h3>
-                <p className="text-lg">Get your PDF patterns immediately after purchase</p>
+                <h3 className="text-2xl font-bold mb-3 text-[#5d4e3a]">Instant Download</h3>
+                <p className="text-lg text-[#6d5d4b]">Get your PDF patterns immediately after purchase</p>
               </div>
-              <div className="bg-gradient-to-br from-[#ff9f40] to-[#ff8c1a] p-8 rounded-lg text-center text-white">
+              <div className="bg-gradient-to-br from-[#b8a89c] to-[#a89888] p-8 rounded-lg text-center border border-[#988878]">
                 <div className="text-5xl mb-4">💬</div>
-                <h3 className="text-2xl font-bold mb-3">Expert Help</h3>
-                <p className="text-lg">Chat with our quilting expert anytime</p>
+                <h3 className="text-2xl font-bold mb-3 text-[#5d4e3a]">Expert Help</h3>
+                <p className="text-lg text-[#6d5d4b] mb-4">Chat with our quilting expert anytime</p>
                 <Button 
                   variant="outline" 
-                  className="mt-4 border-white text-white hover:bg-white/20"
+                  className="border-[#6d5d4b] text-[#5d4e3a] hover:bg-[#6d5d4b] hover:text-white"
                   onClick={() => setChatOpen(true)}
                 >
                   Ask a Question

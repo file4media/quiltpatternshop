@@ -63,3 +63,9 @@
 - [x] Add vibrant color scheme
 - [x] Create colorful feature sections below hero
 - [x] Match AccuQuilt style layout
+
+## Design Refinements
+- [x] Find better, softer hero background image
+- [x] Tone down color palette to be more elegant
+- [x] Add featured promotional card overlay on hero (like Black Friday card in reference)
+- [x] Match AccuQuilt layout more closely
