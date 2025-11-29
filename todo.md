@@ -50,3 +50,9 @@
 - [ ] Set up custom domain (quiltpatternshop.com)
 - [ ] Configure environment variables
 - [ ] Test production deployment
+
+## Design Fixes
+- [x] Add hero quilt image to homepage matching mockup
+- [x] Update hero section with image overlay text
+- [x] Improve overall visual design to match mockup aesthetic
+- [x] Ensure chatbot is prominently featured

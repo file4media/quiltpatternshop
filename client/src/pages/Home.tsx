@@ -50,22 +50,30 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        <section className="relative bg-gradient-to-b from-secondary/30 to-background py-20 md:py-32">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Elegant Quilt Patterns
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Discover timeless designs and quality fabrics. Each pattern is carefully curated for quilters who appreciate classic beauty.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <Button asChild size="lg">
-                <Link href="/patterns">Browse Patterns</Link>
-              </Button>
-              <Button variant="outline" size="lg" onClick={() => setChatOpen(true)}>
-                <MessageCircle className="h-5 w-5 mr-2" />
-                Ask a Quilting Expert
-              </Button>
+        <section className="relative h-[500px] md:h-[600px] overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/hero-quilt.jpg)' }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          </div>
+          <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Elegant Quilt Patterns
+              </h2>
+              <p className="text-xl text-white/90 mb-8">
+                Discover timeless designs and quality fabrics. Each pattern is carefully curated for quilters who appreciate classic beauty.
+              </p>
+              <div className="flex gap-4">
+                <Button asChild size="lg" className="bg-white text-foreground hover:bg-white/90">
+                  <Link href="/patterns">Browse Patterns</Link>
+                </Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10" onClick={() => setChatOpen(true)}>
+                  <MessageCircle className="h-5 w-5 mr-2" />
+                  Ask a Quilting Expert
+                </Button>
+              </div>
             </div>
           </div>
         </section>
