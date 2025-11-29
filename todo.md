@@ -69,3 +69,13 @@
 - [x] Tone down color palette to be more elegant
 - [x] Add featured promotional card overlay on hero (like Black Friday card in reference)
 - [x] Match AccuQuilt layout more closely
+
+## Deployment
+- [ ] Initialize Git repository
+- [ ] Create GitHub repository
+- [ ] Push code to GitHub
+- [ ] Create Railway project
+- [ ] Configure environment variables in Railway
+- [ ] Deploy to Railway
+- [ ] Configure custom domain quiltpatternshop.com
+- [ ] Verify production deployment
