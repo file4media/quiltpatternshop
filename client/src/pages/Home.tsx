@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { ShoppingCart, MessageCircle, User, LogOut } from "lucide-react";
-import { getLoginUrl } from "@/const";
+// import { getLoginUrl } from "@/const";
 import { useState } from "react";
 import { ChatDialog } from "@/components/ChatDialog";
 
@@ -42,7 +42,7 @@ export default function Home() {
               </>
             ) : (
               <Button asChild variant="default" size="sm">
-                <a href={getLoginUrl()}>Sign In</a>
+                <Link href="/login">Sign In</Link>
               </Button>
             )}
           </nav>

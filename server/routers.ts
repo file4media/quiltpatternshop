@@ -1,23 +1,12 @@
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { authRouter } from "./authRoutes";
 
 export const appRouter = router({
-    // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
-  auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true,
-      } as const;
-    }),
-  }),
+  auth: authRouter,
 
   patterns: router({
     list: publicProcedure.query(async () => {
@@ -172,7 +161,7 @@ export const appRouter = router({
       )
       .mutation(async ({ ctx, input }) => {
         const { saveChatMessage } = await import("./db");
-        const { invokeLLM } = await import("./_core/llm");
+        const { chatWithAI } = await import("./openai");
         const { getChatHistory } = await import("./db");
 
         // Save user message
@@ -185,26 +174,20 @@ export const appRouter = router({
 
         // Get chat history
         const history = await getChatHistory(input.sessionId, 20);
-        const messages = history.map((msg) => ({
-          role: msg.role as "user" | "assistant",
-          content: msg.content,
-        }));
+        const messages = [
+          {
+            role: "system" as const,
+            content:
+              "You are a knowledgeable and friendly quilting expert assistant. You help customers with quilting questions, pattern recommendations, techniques, fabric choices, and general quilting advice. Be warm, encouraging, and specific in your responses. If asked about patterns on this site, you can recommend them based on difficulty level and style.",
+          },
+          ...history.map((msg) => ({
+            role: msg.role as "user" | "assistant",
+            content: msg.content,
+          })),
+        ];
 
-        // Call LLM with quilting context
-        const response = await invokeLLM({
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a knowledgeable and friendly quilting expert assistant. You help customers with quilting questions, pattern recommendations, techniques, fabric choices, and general quilting advice. Be warm, encouraging, and specific in your responses. If asked about patterns on this site, you can recommend them based on difficulty level and style.",
-            },
-            ...messages,
-            { role: "user", content: input.message },
-          ],
-        });
-
-        const rawContent = response.choices[0]?.message?.content;
-        const assistantMessage = typeof rawContent === "string" ? rawContent : "I'm sorry, I couldn't generate a response.";
+        // Call OpenAI
+        const assistantMessage = await chatWithAI(messages);
 
         // Save assistant message
         await saveChatMessage({

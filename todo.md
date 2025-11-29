@@ -79,3 +79,15 @@
 - [ ] Deploy to Railway
 - [ ] Configure custom domain quiltpatternshop.com
 - [ ] Verify production deployment
+
+## Authentication System Replacement
+- [x] Update database schema to add password field
+- [x] Install bcrypt for password hashing
+- [x] Create email/password login system
+- [x] Create admin registration endpoint
+- [x] Update frontend login flow
+- [x] Remove Manus OAuth dependencies
+- [x] Replace Manus LLM with OpenAI API
+- [ ] Update environment variables documentation
+- [ ] Push changes to GitHub
+- [ ] Redeploy to Railway

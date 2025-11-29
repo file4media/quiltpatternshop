@@ -9,11 +9,13 @@ import Patterns from "./pages/Patterns";
 import PatternDetail from "./pages/PatternDetail";
 import MyPatterns from "./pages/MyPatterns";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/login"} component={Login} />
       <Route path={"/patterns"} component={Patterns} />
       <Route path={"/pattern/:slug"} component={PatternDetail} />
       <Route path={"/my-patterns"} component={MyPatterns} />
